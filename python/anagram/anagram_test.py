@@ -4,7 +4,6 @@ from anagram import find_anagrams
 
 # Tests adapted from `problem-specifications//canonical-data.json` @ v1.5.0
 
-
 class AnagramTest(unittest.TestCase):
     def test_no_matches(self):
         candidates = ["hello", "world", "zombies", "pants"]

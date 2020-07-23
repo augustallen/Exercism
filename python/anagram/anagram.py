@@ -8,4 +8,3 @@ def find_anagrams(word, candidates):
         if word_string == candidate_string and not candidate.lower() == word.lower():
             output.append(candidate)
     return output
-        
