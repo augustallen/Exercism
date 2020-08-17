@@ -1,7 +1,7 @@
 from datetime import date
 from calendar import monthrange
 
-def MeetupDayException(Exception):
+class MeetupDayException(Exception):
     pass
 
 days = {'Monday' : 0,
@@ -25,15 +25,12 @@ def meetup(year, month, week, day_of_week):
     # select the day of the week from the list
     if week == "teenth":
         day = list(set(teenth_days) & set(days_matching_given_day_of_week))[0]
+    elif week == "last":
+        day = days_matching_given_day_of_week[-1]
     else:
-        day = days_matching_given_day_of_week[week_selection[week]]
+        if week_selection[week] >= len(days_matching_given_day_of_week):
+            raise MeetupDayException(f"Invalid input.")
+        else:
+            day = days_matching_given_day_of_week[week_selection[week]]
     return date(year, month, day)
 
-
-
-received = meetup(2013, 4, "teenth", "Friday")
-
-print(f"Received: {received} of type {type(received)}")
-print(f"Expected: {date(2013,4,19)} of type {type(date(2013,4,19))}")
-
-print(type(date(2013,4,1)))
